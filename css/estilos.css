@@ -46,3 +46,90 @@
 .menu a:hover {
     color: #00bcd4;
 }
+
+/* MAIN GENERAL */
+main {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-texto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hero-texto h1 {
+    font-size: 36px;
+}
+
+.hero-texto p {
+    font-size: 18px;
+}
+
+.hero-img {
+    flex: 1;
+}
+
+.hero-img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* BOTONES */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #00bcd4;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    width: fit-content;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #0097a7;
+}
+
+.btn.grande {
+    font-size: 20px;
+    padding: 15px 35px;
+}
+
+/* SECCIÓN PRESENTACIÓN */
+.presentacion {
+    display: flex;
+    justify-content: center;
+}
+
+/* SECCIÓN INFO */
+.info {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+/* CUADROS */
+.cuadro {
+    background-color: #f4f4f4;
+    padding: 25px;
+    border-radius: 12px;
+    flex: 1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
