@@ -133,3 +133,69 @@ main {
     gap: 10px;
 }
 
+/* SECCIÓN INSTALACIONES */
+
+.instalaciones {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Imágenes dentro del cuadro */
+
+.imagenes-instalacion {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    flex-wrap: wrap; /* permite que bajen a otra línea */
+}
+
+.imagenes-instalacion img {
+    width: 100%;
+    max-width: 250px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+select{
+padding:8px;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+/* CONTENEDOR DE PISTAS */
+
+.pistas{
+display:flex;
+gap:30px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+/* CADA PISTA */
+
+.pista{
+flex:1;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+/* IMÁGENES TODAS IGUALES */
+
+.pista img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* SELECT */
+
+select{
+padding:8px;
+border-radius:6px;
+border:1px solid #ccc;
+}
