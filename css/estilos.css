@@ -27,9 +27,9 @@
 /* Menú */
 .menu {
     display: flex;
-    justify-content: space-evenly; /* reparte el espacio */
+    justify-content: space-evenly; 
     align-items: center;
-    flex: 1; /* ocupa todo el espacio restante */
+    flex: 1; 
     list-style: none;
 }
 
@@ -55,36 +55,41 @@ main {
     gap: 60px;
 }
 
-/* HERO */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+/* SECCIÓN DE INICIO */
+
+.inicio{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:40px;
 }
 
-.hero-texto {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+/* Contenedor del texto principal */
+
+.texto{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
 }
 
-.hero-texto h1 {
-    font-size: 36px;
+/* Estilo del título principal */
+
+.texto h1{
+    font-size:36px;
 }
 
-.hero-texto p {
-    font-size: 18px;
+/* Contenedor de la imagen */
+
+.imagen{
+    flex:1;
 }
 
-.hero-img {
-    flex: 1;
-}
+/* Imagen principal */
 
-.hero-img img {
-    width: 100%;
-    border-radius: 10px;
+.imagen img{
+    width:100%;
+    border-radius:10px;
 }
 
 /* BOTONES */
@@ -148,7 +153,7 @@ main {
     justify-content: center;
     gap: 20px;
     margin-top: 15px;
-    flex-wrap: wrap; /* permite que bajen a otra línea */
+    flex-wrap: wrap; 
 }
 
 .imagenes-instalacion img {
@@ -177,7 +182,7 @@ flex-wrap:wrap;
 /* CADA PISTA */
 
 .pista{
-flex:1 1 300px; /* ancho mínimo de 300px */
+flex:1 1 300px; 
 display:flex;
 flex-direction:column;
 gap:10px;
