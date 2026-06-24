@@ -1,148 +1,169 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Reservas</title>
-        <link rel="stylesheet" href="../css/estilos.css">
-    </head>
-    <body>
-    <header>
-        <nav class="tareas">
-            <div class="logo">
-                <img src="../img/logo.png" alt="Logo">
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <ul class="menu">
-                <li><a href="../index.html">Inicio</a></li>
-                <li><a href="instalaciones.html">Instalaciones</a></li>
-                <li><a href="reservas.html">Reservas</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
-                <li><a href="login.html">Login</a>"</li>
-            </ul>
-        </nav>
-        </header>
+    <title>Reservas</title>
 
-    <main>
+    <link rel="stylesheet" href="../css/estilos.css">
 
-    <!-- TEXTO -->
-    <section class="presentacion">
-        <div class="cuadro">
+    <!-- ICONOS (FontAwesome) -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
 
-        <p>
-        Cada reserva tiene una duración de 1 hora y 30 minutos, tiempo durante el cual los usuarios pueden utilizar la pista con normalidad. Es importante respetar este límite para que todos los clientes puedan disfrutar de su turno sin retrasos. Una vez finalizado el tiempo de reserva, los jugadores deberán abandonar la pista puntualmente.
-        </p>
+<body>
 
+<header>
+
+    <nav class="tareas">
+
+        <div class="logo">
+            <img src="../img/logo.png" alt="Logo">
         </div>
-    </section>
 
+        <ul class="menu">
+
+            <li><a href="../index.php">Inicio</a></li>
+            <li><a href="instalaciones.php">Instalaciones</a></li>
+            <li><a href="reservas.php">Reservas</a></li>
+            <li><a href="contacto.php">Contacto</a></li>
+
+            <?php if (isset($_SESSION['usuario'])): ?>
+
+                <!-- LOGOUT -->
+                <li>
+                    <a href="../php/logout.php" title="Cerrar sesión">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                </li>
+
+            <?php else: ?>
+
+                <!-- LOGIN -->
+                <li>
+                    <a href="login.php" title="Login">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                </li>
+
+            <?php endif; ?>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- TEXTO INTRO -->
+    <section class="presentacion">
+
+        <div class="cuadro">
+            <p>
+                Cada reserva tiene una duración de 1 hora y 30 minutos. Es importante respetar el horario para que todos los usuarios puedan disfrutar de las pistas correctamente.
+            </p>
+        </div>
+
+    </section>
 
     <!-- POLIDEPORTIVO LOS PASOS -->
     <section class="instalaciones">
 
         <div class="cuadro">
 
-        <h3>Polideportivo Los Pasos</h3>
+            <h3>Polideportivo Los Pasos</h3>
 
-        <div class="pistas">
+            <div class="pistas">
 
-        <div class="pista">
+                <div class="pista">
+                    <h4>Pista 1</h4>
+                    <img src="../img/pista7.jpg" alt="Pista 1">
 
-        <h4>Pista 1</h4>
+                    <select>
+                        <option>9:00 - 10:30</option>
+                        <option>10:30 - 12:00</option>
+                        <option>12:00 - 13:30</option>
+                        <option>15:00 - 16:30</option>
+                        <option>16:30 - 18:00</option>
+                        <option>18:00 - 19:30</option>
+                    </select>
 
-        <img src="../img/pista7.jpg" alt="Pista 1">
+                    <a href="#" class="btn">Reservar</a>
+                </div>
 
-            <select>
-                <option>9:00 - 10:30</option>
-                <option>10:30 - 12:00</option>
-                <option>12:00 - 13:30</option>
-                <option>15:00 - 16:30</option>
-                <option>16:30 - 18:00</option>
-                <option>18:00 - 19:30</option>
-            </select>
+                <div class="pista">
+                    <h4>Pista 2</h4>
+                    <img src="../img/pista7.jpg" alt="Pista 2">
 
-        <a href="#" class="btn">Reservar</a>
+                    <select>
+                        <option>9:00 - 10:30</option>
+                        <option>10:30 - 12:00</option>
+                        <option>12:00 - 13:30</option>
+                        <option>15:00 - 16:30</option>
+                        <option>16:30 - 18:00</option>
+                        <option>18:00 - 19:30</option>
+                    </select>
 
-        </div>
+                    <a href="#" class="btn">Reservar</a>
+                </div>
 
-
-        <div class="pista">
-
-        <h4>Pista 2</h4>
-
-        <img src="../img/pista7.jpg" alt="Pista 2">
-
-            <select>
-                <option>9:00 - 10:30</option>
-                <option>10:30 - 12:00</option>
-                <option>12:00 - 13:30</option>
-                <option>15:00 - 16:30</option>
-                <option>16:30 - 18:00</option>
-                <option>18:00 - 19:30</option>
-            </select>
-
-        <a href="#" class="btn">Reservar</a>
+            </div>
 
         </div>
-
-        </div>
-
-        </div>
-
 
         <!-- CAMPO MUNICIPAL B4 -->
-
         <div class="cuadro">
 
-        <h3>Campo Municipal B4</h3>
+            <h3>Campo Municipal B4</h3>
 
-        <div class="pistas">
+            <div class="pistas">
 
-        <div class="pista">
+                <div class="pista">
+                    <h4>Pista 3</h4>
+                    <img src="../img/pista8.jpg" alt="Pista 3">
 
-        <h4>Pista 3</h4>
+                    <select>
+                        <option>9:00 - 10:30</option>
+                        <option>10:30 - 12:00</option>
+                        <option>12:00 - 13:30</option>
+                        <option>15:00 - 16:30</option>
+                        <option>16:30 - 18:00</option>
+                        <option>18:00 - 19:30</option>
+                    </select>
 
-        <img src="../img/pista8.jpg" alt="Pista 3">
+                    <a href="#" class="btn">Reservar</a>
+                </div>
 
-            <select>
-                <option>9:00 - 10:30</option>
-                <option>10:30 - 12:00</option>
-                <option>12:00 - 13:30</option>
-                <option>15:00 - 16:30</option>
-                <option>16:30 - 18:00</option>
-                <option>18:00 - 19:30</option>
-            </select>
+                <div class="pista">
+                    <h4>Pista 4</h4>
+                    <img src="../img/pista8.jpg" alt="Pista 4">
 
-        <a href="#" class="btn">Reservar</a>
+                    <select>
+                        <option>9:00 - 10:30</option>
+                        <option>10:30 - 12:00</option>
+                        <option>12:00 - 13:30</option>
+                        <option>15:00 - 16:30</option>
+                        <option>16:30 - 18:00</option>
+                        <option>18:00 - 19:30</option>
+                    </select>
 
-        </div>
+                    <a href="#" class="btn">Reservar</a>
+                </div>
 
-
-        <div class="pista">
-
-        <h4>Pista 4</h4>
-
-        <img src="../img/pista8.jpg" alt="Pista 4">
-
-            <select>
-                <option>9:00 - 10:30</option>
-                <option>10:30 - 12:00</option>
-                <option>12:00 - 13:30</option>
-                <option>15:00 - 16:30</option>
-                <option>16:30 - 18:00</option>
-                <option>18:00 - 19:30</option>
-            </select>
-
-        <a href="#" class="btn">Reservar</a>
-
-        </div>
-
-        </div>
+            </div>
 
         </div>
 
     </section>
 
-    </main>
-    </body>
+</main>
+
+</body>
 </html>

@@ -4,7 +4,7 @@ require "conexion.php";
 
 // Comprobar que llegan los datos del formulario
 if (!isset($_POST['usuario']) || !isset($_POST['password'])) {
-    header("Location: ../paginas/login.html");
+    header("Location: ../paginas/login.php");
     exit;
 }
 
@@ -29,7 +29,7 @@ if ($user && password_verify($password, $user['password'])) {
     if ($user['rol'] === 'admin') {
         header("Location: ../php/admin.php");
     } else {
-        header("Location: ../index.html");
+        header("Location: ../index.php");
     }
 
     exit;
