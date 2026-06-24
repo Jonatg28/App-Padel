@@ -1,41 +1,5 @@
 <?php
 session_start();
-require_once "../php/conexion.php";
-
-// 🧠 SI VIENE DEL FORMULARIO
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $usuario = trim($_POST['usuario']);
-    $password = $_POST['password'];
-
-    // 🔐 encriptar contraseña
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-
-    try {
-
-        // 🔎 comprobar si existe usuario
-        $sql = "SELECT id FROM usuarios WHERE usuario = ?";
-        $stmt = $conexion->prepare($sql);
-        $stmt->execute([$usuario]);
-
-        if ($stmt->rowCount() > 0) {
-            $error = "El usuario ya existe";
-        } else {
-
-            // 💾 insertar usuario
-            $sql = "INSERT INTO usuarios (usuario, password) VALUES (?, ?)";
-            $stmt = $conexion->prepare($sql);
-            $stmt->execute([$usuario, $hash]);
-
-            // 🔁 redirigir al login
-            header("Location: login.php");
-            exit;
-        }
-
-    } catch (PDOException $e) {
-        die("Error en registro: " . $e->getMessage());
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -80,22 +44,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <main>
 
+    <!-- INTRO -->
     <section class="presentacion">
 
         <div class="cuadro">
 
             <h2>Registro de usuario</h2>
 
-            <p>Crea tu cuenta para poder reservar pistas.</p>
+            <p>Crea tu cuenta para poder reservar pistas de pádel.</p>
 
-            <!-- 🔴 MENSAJE ERROR -->
-            <?php if (!empty($error)): ?>
-                <p style="color:red;">
-                    <?= $error ?>
-                </p>
-            <?php endif; ?>
+        </div>
 
-            <form action="" method="POST">
+    </section>
+
+    <!-- FORMULARIO -->
+    <section class="presentacion">
+
+        <div class="cuadro">
+
+            <form action="../php/registro.php" method="POST">
 
                 <div class="campo">
                     <label>Usuario</label>
@@ -113,7 +80,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             </form>
 
-            <p style="margin-top:15px; text-align:center;">
+            <!--  ERROR DESDE SESSION -->
+            <?php if (!empty($_SESSION['error_registro'])): ?>
+                <p style="color:red; text-align:center; margin-top:10px;">
+                    <?= $_SESSION['error_registro']; ?>
+                </p>
+                <?php unset($_SESSION['error_registro']); ?>
+            <?php endif; ?>
+
+            <!-- 🔙 VOLVER LOGIN -->
+            <p style="text-align:center; margin-top:15px;">
                 ¿Ya tienes cuenta?
                 <a href="login.php">Inicia sesión</a>
             </p>

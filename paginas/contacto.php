@@ -38,7 +38,7 @@ session_start();
 
         <?php if (isset($_SESSION['usuario'])): ?>
 
-            <!-- 🔥 SOLO LOGOUT -->
+            <!-- SOLO LOGOUT -->
             <li>
                 <a href="../php/logout.php" title="Cerrar sesión">
                     <i class="fa-solid fa-right-from-bracket"></i>

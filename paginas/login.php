@@ -1,7 +1,6 @@
 <?php
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -36,26 +35,6 @@ session_start();
             <li><a href="reservas.php">Reservas</a></li>
             <li><a href="contacto.php">Contacto</a></li>
 
-            <?php if (isset($_SESSION['usuario'])): ?>
-
-                <!-- LOGOUT -->
-                <li>
-                    <a href="../php/logout.php" title="Cerrar sesión">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </a>
-                </li>
-
-            <?php else: ?>
-
-                <!-- LOGIN -->
-                <li>
-                    <a href="login.php" title="Login">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-                </li>
-
-            <?php endif; ?>
-
         </ul>
 
     </nav>
@@ -64,27 +43,25 @@ session_start();
 
 <main>
 
-    <!-- PRESENTACIÓN -->
+    <!-- INTRO -->
     <section class="presentacion">
 
         <div class="cuadro">
 
             <h2>Iniciar sesión</h2>
 
-            <p>
-                Accede para gestionar tus reservas de pádel.
-            </p>
+            <p>Accede para gestionar tus reservas de pádel.</p>
 
         </div>
 
     </section>
 
-    <!-- LOGIN FORM -->
+    <!-- FORMULARIO -->
     <section class="presentacion">
 
         <div class="cuadro">
 
-            <form action="../php/login.php" method="POST" class="form-contacto">
+            <form action="../php/login.php" method="POST">
 
                 <div class="campo">
                     <label>Usuario</label>
@@ -102,8 +79,16 @@ session_start();
 
             </form>
 
-            <!-- 🔥 ENLACE A REGISTRO -->
-            <p style="margin-top:15px; text-align:center;">
+            <!--  MENSAJE SI HAY ERROR (viene del backend) -->
+            <?php if (!empty($_SESSION['error_login'])): ?>
+                <p style="color:red; text-align:center; margin-top:10px;">
+                    <?= $_SESSION['error_login']; ?>
+                </p>
+                <?php unset($_SESSION['error_login']); ?>
+            <?php endif; ?>
+
+            <!--  LINK A REGISTRO -->
+            <p style="text-align:center; margin-top:15px;">
                 ¿No tienes cuenta?
                 <a href="registro.php">Regístrate aquí</a>
             </p>

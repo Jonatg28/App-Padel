@@ -1,10 +1,18 @@
 <?php
 session_start();
+require_once "../php/conexion.php";
+
+//  acceso solo usuarios logueados
+if (!isset($_SESSION['usuario_id'])) {
+    header("Location: login.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,9 +20,10 @@ session_start();
 
     <link rel="stylesheet" href="../css/estilos.css">
 
-    <!-- ICONOS (FontAwesome) -->
+    <!-- ICONOS -->
     <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body>
@@ -34,25 +43,11 @@ session_start();
             <li><a href="reservas.php">Reservas</a></li>
             <li><a href="contacto.php">Contacto</a></li>
 
-            <?php if (isset($_SESSION['usuario'])): ?>
-
-                <!-- LOGOUT -->
-                <li>
-                    <a href="../php/logout.php" title="Cerrar sesión">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </a>
-                </li>
-
-            <?php else: ?>
-
-                <!-- LOGIN -->
-                <li>
-                    <a href="login.php" title="Login">
-                        <i class="fa-solid fa-user"></i>
-                    </a>
-                </li>
-
-            <?php endif; ?>
+            <li>
+                <a href="../php/logout.php" title="Cerrar sesión">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </a>
+            </li>
 
         </ul>
 
@@ -62,31 +57,45 @@ session_start();
 
 <main>
 
-    <!-- TEXTO INTRO -->
-    <section class="presentacion">
+<!-- INTRO -->
+<section class="presentacion">
 
-        <div class="cuadro">
-            <p>
-                Cada reserva tiene una duración de 1 hora y 30 minutos. Es importante respetar el horario para que todos los usuarios puedan disfrutar de las pistas correctamente.
-            </p>
-        </div>
+    <div class="cuadro">
 
-    </section>
+        <h2>Reservar pista</h2>
 
-    <!-- POLIDEPORTIVO LOS PASOS -->
-    <section class="instalaciones">
+        <p>
+            Selecciona una pista y un horario disponible.
+        </p>
 
-        <div class="cuadro">
+    </div>
 
-            <h3>Polideportivo Los Pasos</h3>
+</section>
 
-            <div class="pistas">
+<!-- =========================
+     POLIDEPORTIVO LOS PASOS
+========================= -->
 
-                <div class="pista">
-                    <h4>Pista 1</h4>
-                    <img src="../img/pista7.jpg" alt="Pista 1">
+<section class="instalaciones">
 
-                    <select>
+    <div class="cuadro">
+
+        <h3>Polideportivo Los Pasos</h3>
+
+        <div class="pistas">
+
+            <!-- PISTA 1 -->
+            <div class="pista">
+
+                <h4>Pista 1</h4>
+
+                <img src="../img/pista7.jpg" alt="Pista 1">
+
+                <form action="../php/reservar.php" method="POST">
+
+                    <input type="hidden" name="pista" value="Pista 1">
+
+                    <select name="horario">
                         <option>9:00 - 10:30</option>
                         <option>10:30 - 12:00</option>
                         <option>12:00 - 13:30</option>
@@ -95,14 +104,24 @@ session_start();
                         <option>18:00 - 19:30</option>
                     </select>
 
-                    <a href="#" class="btn">Reservar</a>
-                </div>
+                    <button type="submit" class="btn">Reservar</button>
 
-                <div class="pista">
-                    <h4>Pista 2</h4>
-                    <img src="../img/pista7.jpg" alt="Pista 2">
+                </form>
 
-                    <select>
+            </div>
+
+            <!-- PISTA 2 -->
+            <div class="pista">
+
+                <h4>Pista 2</h4>
+
+                <img src="../img/pista7.jpg" alt="Pista 2">
+
+                <form action="../php/reservar.php" method="POST">
+
+                    <input type="hidden" name="pista" value="Pista 2">
+
+                    <select name="horario">
                         <option>9:00 - 10:30</option>
                         <option>10:30 - 12:00</option>
                         <option>12:00 - 13:30</option>
@@ -111,25 +130,38 @@ session_start();
                         <option>18:00 - 19:30</option>
                     </select>
 
-                    <a href="#" class="btn">Reservar</a>
-                </div>
+                    <button type="submit" class="btn">Reservar</button>
+
+                </form>
 
             </div>
 
         </div>
 
-        <!-- CAMPO MUNICIPAL B4 -->
-        <div class="cuadro">
+    </div>
 
-            <h3>Campo Municipal B4</h3>
+    <!-- =========================
+         CAMPO MUNICIPAL B4
+    ========================= -->
 
-            <div class="pistas">
+    <div class="cuadro">
 
-                <div class="pista">
-                    <h4>Pista 3</h4>
-                    <img src="../img/pista8.jpg" alt="Pista 3">
+        <h3>Campo Municipal B4</h3>
 
-                    <select>
+        <div class="pistas">
+
+            <!-- PISTA 3 -->
+            <div class="pista">
+
+                <h4>Pista 3</h4>
+
+                <img src="../img/pista8.jpg" alt="Pista 3">
+
+                <form action="../php/reservar.php" method="POST">
+
+                    <input type="hidden" name="pista" value="Pista 3">
+
+                    <select name="horario">
                         <option>9:00 - 10:30</option>
                         <option>10:30 - 12:00</option>
                         <option>12:00 - 13:30</option>
@@ -138,14 +170,24 @@ session_start();
                         <option>18:00 - 19:30</option>
                     </select>
 
-                    <a href="#" class="btn">Reservar</a>
-                </div>
+                    <button type="submit" class="btn">Reservar</button>
 
-                <div class="pista">
-                    <h4>Pista 4</h4>
-                    <img src="../img/pista8.jpg" alt="Pista 4">
+                </form>
 
-                    <select>
+            </div>
+
+            <!-- PISTA 4 -->
+            <div class="pista">
+
+                <h4>Pista 4</h4>
+
+                <img src="../img/pista8.jpg" alt="Pista 4">
+
+                <form action="../php/reservar.php" method="POST">
+
+                    <input type="hidden" name="pista" value="Pista 4">
+
+                    <select name="horario">
                         <option>9:00 - 10:30</option>
                         <option>10:30 - 12:00</option>
                         <option>12:00 - 13:30</option>
@@ -154,14 +196,17 @@ session_start();
                         <option>18:00 - 19:30</option>
                     </select>
 
-                    <a href="#" class="btn">Reservar</a>
-                </div>
+                    <button type="submit" class="btn">Reservar</button>
+
+                </form>
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 </main>
 
